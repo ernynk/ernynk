@@ -13,7 +13,6 @@ bucket = storage.bucket("scgbeta-1234.appspot.com")
 file_path = "workflow_api.json"
 
 app = Flask(__name__)
-internal_server_process = None
 
 @app.route('/process', methods=['POST'])
 def index():
