@@ -8,7 +8,7 @@ def hello():
   try:
     print("123123123")
     sys.stdout.flush()
-    return 'ANNN', 200
+    return 'NEW versionn', 200
   except:
     return 'NOOO', 200
 
