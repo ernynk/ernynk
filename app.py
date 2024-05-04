@@ -6,11 +6,11 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
   try:
-    print("HHEELLOO")
+    print("123123123")
     sys.stdout.flush()
-    return '', 200
+    return 'ANNN', 200
   except:
-    return '', 200
+    return 'NOOO', 200
 
 if __name__ == '__main__':
     server_port = os.environ.get('PORT', '8080')
