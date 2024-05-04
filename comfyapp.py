@@ -17,11 +17,14 @@ app = Flask(__name__)
 @app.route('/process', methods=['POST'])
 def index():
     try:
-        data = flask_request.get_json()
-        req_input = data['input']
-        print(req_input)
-        print("inputttt")
-
+        try:
+            data = flask_request.get_json()
+            req_input = data['input']
+            print(req_input)
+            print("inputttt")
+        except:
+            print("NO dataa")
+            
         internal_server_process = subprocess.Popen(["python", "main.py", "--cpu", "--listen", "120.6.6.6", "--port", "6644"])
         time.sleep(5)
         print("slpettt")
