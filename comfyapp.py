@@ -28,11 +28,12 @@ def index():
         config_document = database.document("users/config").get()
         sleep_time = int(config_document.get("sleep_time"))
         internal_url = config_document.get("internal_url")
-
+        print(sleep_time)
+        print(internal_url)
 
 
         internal_server_process = subprocess.Popen(["python", "main.py", "--cpu"])
-        time.sleep(20)
+        time.sleep(sleep_time)
         print("slpettt")
 
 
@@ -47,7 +48,7 @@ def index():
 
         def queue_prompt(prompt):
             # URL of the endpoint to which you want to send the POST request
-            url = "http://127.0.0.1:8188/prompt"
+            url = internal_url
 
             # Data to send in the POST request (as JSON)
             data =  {"prompt": prompt}
