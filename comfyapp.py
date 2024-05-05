@@ -30,6 +30,7 @@ def index():
         config_document = database.document("users/config").get()
         command_list = eval(config_document.get("command_list"))
         file_no = int(config_document.get("file_no"))
+        print(command_list)
 
 
         def check_server(url) -> bool:
@@ -49,11 +50,11 @@ def index():
                 print(f"An error occurred: {e}")
                 return False
             
-        comfyUI_up = check_server("http://127.0.0.1:8188/prompt")
+        comfyUI_up = check_server("http://127.0.0.1:8188")
         if comfyUI_up:
             print("uppp")
         else:
-            internal_server_process = subprocess.Popen(args=command_list, shell=True)
+            internal_server_process = subprocess.Popen(command_list)
             time.sleep(15)
             print("slepttt")
 
