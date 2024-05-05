@@ -1,5 +1,4 @@
 import json
-from urllib import request as urllib_request
 import random, time, os, subprocess, sys
 from firebase_admin import firestore, credentials, initialize_app, storage
 from flask import Flask
@@ -62,7 +61,7 @@ def index():
 
 
 
-        os.makedirs("output", exist_ok=True)
+        # os.makedirs("output", exist_ok=True)
         print("listing dirrr")
         directories = [d for d in os.listdir() if os.path.isdir(d)]
         # Print each directory
