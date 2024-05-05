@@ -27,6 +27,7 @@ def index():
             
         config_document = database.document("users/config").get()
         sleep_time = int(config_document.get("sleep_time"))
+        file_no = int(config_document.get("file_no"))
         internal_url = config_document.get("internal_url")
         print(sleep_time)
         print(internal_url)
@@ -69,19 +70,19 @@ def index():
 
 
         # os.makedirs("output", exist_ok=True)
-        print("listing dirrr")
-        directories = [d for d in os.listdir() if os.path.isdir(d)]
-        # Print each directory
-        for directory in directories:
-            print(directory)
-        print("listed dirrr")
+
         queue_prompt(prompt_text)
         print("queued")
         print(os.listdir("./output"))
         print("osssssss")
         blob = bucket.blob(str(round(time.time(),2)))
-        print(str("./output/" + sorted(os.listdir("./output"))[-1]))
-        blob.upload_from_filename(filename=str("./output/" + sorted(os.listdir("./output"))[-1]))
+        print("listing dirrr")
+        directories = [d for d in os.listdir("./output/") if os.path.isdir(d)]
+        for directory in directories:
+            print(directory)
+        print("listed dirrr")
+        print(str("./output/" + sorted(os.listdir("./output"))[file_no]))
+        blob.upload_from_filename(filename=str("./output/" + sorted(os.listdir("./output"))[file_no]))
         print("uploaded")
 
         internal_server_process.terminate()
