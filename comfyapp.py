@@ -79,7 +79,7 @@ def index():
         print("osssssss")
         blob = bucket.blob(str(round(time.time(),2)))
         print("listing dirrr")
-        directories = [d for d in os.listdir("./output/") if os.path.isdir(d)]
+        directories = [d for d in os.listdir("./output")]
         for directory in directories:
             print(directory)
         print("listed dirrr")
