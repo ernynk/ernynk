@@ -25,7 +25,7 @@ def index():
         except:
             print("NO dataa")
             
-        internal_server_process = subprocess.Popen(["python", "main.py", "--cpu", "--listen", "120.6.6.6", "--port", "6644"])
+        internal_server_process = subprocess.Popen(["python", "main.py", "--cpu"])
         time.sleep(5)
         print("slpettt")
 
@@ -41,7 +41,7 @@ def index():
 
         def queue_prompt(prompt):
             # URL of the endpoint to which you want to send the POST request
-            url = "http://120.6.6.6:6644/prompt"
+            url = "http://127.0.0.1:8188/prompt"
 
             # Data to send in the POST request (as JSON)
             data =  {"prompt": prompt}
