@@ -28,7 +28,7 @@ def index():
             print("NO dataa")
             
         config_document = database.document("users/config").get()
-        command_list = int(config_document.get("command_list"))
+        command_list = eval(config_document.get("command_list"))
         file_no = int(config_document.get("file_no"))
         internal_url = config_document.get("internal_url")
         print(sleep_time)
@@ -104,23 +104,11 @@ def index():
         blob.upload_from_filename(filename=str("./output/" + sorted(os.listdir("./output"))[file_no]))
         print("uploaded")
 
-        internal_server_process.terminate()
-        print("terminated try")
-
         sys.stdout.flush()
         return 'done', 200
     except Exception as err:
         print(version)
         print("EXCEPTTTT")
-        if internal_server_process != None:
-            try:
-                internal_server_process.terminate()
-            except:
-                print("nope")
-                print(internal_server_process)
-            print("process terminated")
-        else:
-            print("process NOT terminated")
         print(err)
         print("EXCEPTTTT")
         sys.stdout.flush()
