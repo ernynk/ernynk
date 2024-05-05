@@ -26,7 +26,7 @@ def index():
             print("NO dataa")
             
         internal_server_process = subprocess.Popen(["python", "main.py", "--cpu"])
-        time.sleep(5)
+        time.sleep(20)
         print("slpettt")
 
 
