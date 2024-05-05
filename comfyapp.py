@@ -30,9 +30,6 @@ def index():
         config_document = database.document("users/config").get()
         command_list = eval(config_document.get("command_list"))
         file_no = int(config_document.get("file_no"))
-        internal_url = config_document.get("internal_url")
-        print(sleep_time)
-        print(internal_url)
 
 
         def check_server(url) -> bool:
