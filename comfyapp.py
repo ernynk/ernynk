@@ -16,7 +16,9 @@ app = Flask(__name__)
 
 @app.route('/process', methods=['POST'])
 def index():
+    version = "V - 1"
     try:
+        print(version)
         try:
             data = flask_request.get_json()
             req_input = data['input']
@@ -34,7 +36,7 @@ def index():
 
 
         internal_server_process = subprocess.Popen(["python", "main.py", "--cpu"])
-        time.sleep(sleep_time)
+        time.sleep(20)
         print("slpettt")
 
 
@@ -91,6 +93,7 @@ def index():
         sys.stdout.flush()
         return 'done', 200
     except Exception as err:
+        print(version)
         print("EXCEPTTTT")
         if internal_server_process != None:
             try:
