@@ -25,6 +25,12 @@ def index():
         except:
             print("NO dataa")
             
+        config_document = database.document("users/config").get()
+        sleep_time = int(config_document.get("sleep_time"))
+        internal_url = config_document.get("internal_url")
+
+
+
         internal_server_process = subprocess.Popen(["python", "main.py", "--cpu"])
         time.sleep(20)
         print("slpettt")
@@ -81,7 +87,7 @@ def index():
         print("terminated try")
 
         sys.stdout.flush()
-        return '', 200
+        return 'done', 200
     except Exception as err:
         print("EXCEPTTTT")
         if internal_server_process != None:
@@ -96,7 +102,7 @@ def index():
         print(err)
         print("EXCEPTTTT")
         sys.stdout.flush()
-        return '', 200
+        return 'err', 200
         
 
 if __name__ == '__main__':
