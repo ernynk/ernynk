@@ -4,6 +4,7 @@ import random, time, os, subprocess, sys
 from firebase_admin import firestore, credentials, initialize_app, storage
 from flask import Flask
 from flask import request as flask_request
+import requests
 
 cred = credentials.Certificate('scgbeta-1234-af5e222bb1fa.json')
 app = initialize_app(credential=cred)
@@ -40,15 +41,28 @@ def index():
         print("changed")
 
         def queue_prompt(prompt):
-            p = {"prompt": prompt}
-            data = json.dumps(p).encode('utf-8')
-            req =  urllib_request.Request("http://120.6.6.6:6644/prompt", data=data)
-            try:
-                print(req)
-            except:
-                print("no reqqq")
+            # URL of the endpoint to which you want to send the POST request
+            url = "http://120.6.6.6:6644/prompt"
+
+            # Data to send in the POST request (as JSON)
+            data =  {"prompt": prompt}
+
+            # Send POST request
+            response = requests.post(url, json=data)
+
+            # Check if request was successful
+            if response.status_code == 200:
+                response_data = response.json()  # Convert response JSON to dictionary
+                print("POST request sent successfully!")
+                print("Response:", response_data)
+                return "POST request sent successfully! Response: " + str(response_data)
+            else:
+                print(f"Failed to send POST request. Status code: {response.status_code}")
+                return f"Failed to send POST request. Status code: {response.status_code}"
 
 
+
+        os.makedirs("output", exist_ok=True)
         print("listing dirrr")
         directories = [d for d in os.listdir() if os.path.isdir(d)]
         # Print each directory
