@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/process', methods=['POST'])
 def index():
-    version = "V - 5"
+    version = "V - 6"
     try:
         print(version)
         try:
