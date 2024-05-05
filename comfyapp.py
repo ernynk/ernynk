@@ -49,13 +49,19 @@ def index():
                 print("no reqqq")
 
 
-            
+        print("listing dirrr")
+        directories = [d for d in os.listdir() if os.path.isdir(d)]
+        # Print each directory
+        for directory in directories:
+            print(directory)
+        print("listed dirrr")
         queue_prompt(prompt_text)
         print("queued")
-        print(os.listdir("output"))
+        print(os.listdir("./output"))
         print("osssssss")
         blob = bucket.blob(str(round(time.time(),2)))
-        blob.upload_from_filename(filename=str(sorted(os.listdir("output"))[-1]))
+        print(str("./output/" + sorted(os.listdir("./output"))[-1]))
+        blob.upload_from_filename(filename=str("./output/" + sorted(os.listdir("./output"))[-1]))
         print("uploaded")
 
         internal_server_process.terminate()
