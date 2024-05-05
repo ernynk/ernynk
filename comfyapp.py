@@ -55,7 +55,7 @@ def index():
             print("uppp")
         else:
             internal_server_process = subprocess.Popen(command_list)
-            time.sleep(15)
+            time.sleep(20)
             print("slepttt")
 
 
