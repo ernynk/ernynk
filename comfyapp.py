@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/process', methods=['POST'])
 def index():
-    version = "V - 3"
+    version = "V - 4"
     try:
         print(version)
         try:
@@ -28,16 +28,37 @@ def index():
             print("NO dataa")
             
         config_document = database.document("users/config").get()
-        sleep_time = int(config_document.get("sleep_time"))
+        command_list = int(config_document.get("command_list"))
         file_no = int(config_document.get("file_no"))
         internal_url = config_document.get("internal_url")
         print(sleep_time)
         print(internal_url)
 
 
-        internal_server_process = subprocess.Popen(["python", "main.py", "--cpu"])
-        time.sleep(20)
-        print("slpettt")
+        def check_server(url) -> bool:
+            try:
+                response = requests.get(url)
+                # Check if the response status code is in the 2xx range (indicating success)
+                if response.status_code // 100 == 2:
+                    print(f"The server at {url} is up and running!")
+                    return True
+                else:
+                    print(f"The server at {url} returned a non-success status code: {response.status_code}")
+                    return True
+            except requests.ConnectionError:
+                print(f"Failed to connect to the server at {url}. Is it running?")
+                return False
+            except Exception as e:
+                print(f"An error occurred: {e}")
+                return False
+            
+        comfyUI_up = check_server("http://127.0.0.1:8188/prompt")
+        if comfyUI_up:
+            print("uppp")
+        else:
+            internal_server_process = subprocess.Popen(args=command_list, shell=True)
+            time.sleep(15)
+            print("slepttt")
 
 
             # Open the file in read mode
@@ -51,7 +72,7 @@ def index():
 
         def queue_prompt(prompt):
             # URL of the endpoint to which you want to send the POST request
-            url = internal_url
+            url = "http://127.0.0.1:8188/prompt"
 
             # Data to send in the POST request (as JSON)
             data =  {"prompt": prompt}
@@ -68,10 +89,6 @@ def index():
             else:
                 print(f"Failed to send POST request. Status code: {response.status_code}")
                 return f"Failed to send POST request. Status code: {response.status_code}"
-
-
-
-        # os.makedirs("output", exist_ok=True)
 
         queue_prompt(prompt_text)
         print("queued")
