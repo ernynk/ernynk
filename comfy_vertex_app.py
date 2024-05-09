@@ -75,16 +75,25 @@ def predict():
         if user_input == "replace_file":
             github_link = data["instances"][1]
             file_path = data["instances"][2]
+
             command = f"""sh -c 'curl -o {file_path} {github_link}'"""
             print("COMMAND: " + command)
-            replace_file_result = subprocess.run(command, shell=True)
+            if file_path == "container_app.py":
+                if check_server("http://127.0.0.1:8188"):
+                    comfyui_process.terminate()
+                    print("comfyui shut down for replacement of container_app")
+                else:
+                    print("comfyui was down for replacement of container_app")
+                replace_file_result = subprocess.run(command, shell=True)
             sys.stdout.flush()
             return jsonify(replace_file_result.stdout), 200
         
         
         if user_input == "run_custom_code":
             user_code = data["instances"][1]
-            eval(user_code)
+            def func():
+                eval(user_code)
+            func()
             return jsonify("Code ran"), 200
 
 
@@ -146,8 +155,9 @@ def predict():
             for directory in directories:
                 print(directory)
             print("listed directory from main")
-            print(str("./output/" + sorted(os.listdir("./output"))[file_no]))
-            blob.upload_from_filename(filename=str("./output/" + sorted(os.listdir("./output"))[file_no]))
+            our_filename = str("./output/" + sorted(os.listdir("./output"))[file_no])
+            blob.upload_from_filename(filename=our_filename)
+            os.remove(path=our_filename)
             print("uploaded picture from main")
             directories = [d for d in os.listdir("./output")]
             for directory in directories:
@@ -167,7 +177,7 @@ def predict():
 
 if __name__ == '__main__':
     server_port = os.environ.get('PORT', '8080')
-    app.run(debug=True, host='127.0.0.1', port=server_port)
+    app.run(debug=True, host='0.0.0.0', port=server_port)
 
 
 """
