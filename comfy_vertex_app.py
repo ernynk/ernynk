@@ -124,8 +124,9 @@ def predict():
             with open(file_path, "r") as file:
                 prompt_text = json.load(file)
             print("read workflow from main")
-
-            prompt_text["12"]["inputs"]["color"] = random.randint(10000000, 16000000)
+            instance_random = random.randint(10000000, 16000000)
+            prompt_text["9"]["inputs"]["filename_prefix"] = instance_random
+            prompt_text["12"]["inputs"]["color"] = instance_random
             # prompt_text["16"]["inputs"]["text"] = user_request
             print("changed color from main")
 
@@ -144,9 +145,19 @@ def predict():
                     return f"Failed to send POST request. Status code: {response.status_code}"
 
             queue_prompt(prompt_text)
-            print("queued from main")
-            print(os.listdir("./output"))
-            print("outpu files from main")
+
+            _while_break = 0
+            while True:
+                if os.path.exists("./output/" + str(instance_random) + "_00001_.png"):
+                    print("there it is: " + str(_while_break) + " seconds")
+                    break
+                elif _while_break == 10:
+                    sys.stdout.flush()
+                    return jsonify({"predictions":[{"answer":"waited comfyui for 10 seconds"}]}), 200
+                    
+                else:    
+                    time.sleep(1)
+                    _while_break = _while_break + 1 
             blob = bucket.blob(str(round(time.time(),2)))
             print("listing directory from main")
             directories = [d for d in os.listdir("./output")]
