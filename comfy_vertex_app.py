@@ -49,7 +49,7 @@ def predict():
             if is_comfyUI_up:
                 print("comfyui was already up")
                 sys.stdout.flush()
-                return jsonify({"predictions":"comfyui is already up"})
+                return jsonify({"predictions":[{"answer":"comfyui is already up"}]})
             else:
                 comfyui_startup_commands = data["instances"][1]
                 global comfyui_process
@@ -57,7 +57,7 @@ def predict():
                 time.sleep(30)
                 print("comfyui server started")
                 sys.stdout.flush()
-                return jsonify({"predictions":"comfyui server started"})
+                return jsonify({"predictions":[{"answer":"comfyui server started"}]})
             
 
         if user_input == "shutdown_comfyui_server":
@@ -65,11 +65,11 @@ def predict():
                 comfyui_process.terminate()
                 print("comfyui shut down")
                 sys.stdout.flush()
-                return jsonify({"predictions":"shutdown_comfy"}), 200
+                return jsonify({"predictions":[{"answer":"shutdown_comfy"}]}), 200
             else:
                 print("comfyui was already down")
                 sys.stdout.flush()
-                return jsonify({"predictions":"comfyui was already down"}), 200
+                return jsonify({"predictions":[{"answer":"comfyui was already down"}]}), 200
             
 
         if user_input == "replace_file":
@@ -86,7 +86,7 @@ def predict():
                     print("comfyui was down for replacement of container_app")
                 replace_file_result = subprocess.run(command, shell=True)
             sys.stdout.flush()
-            return jsonify({"predictions":replace_file_result.stdout}), 200
+            return jsonify({"predictions":[{"answer":replace_file_result.stdout}]}), 200
         
         
         if user_input == "run_custom_code":
@@ -94,7 +94,7 @@ def predict():
             def func():
                 eval(user_code)
             func()
-            return jsonify({"predictions":"Code ran"}), 200
+            return jsonify({"predictions":[{"answer":"Code ran"}]}), 200
 
 
         if user_input == "predict":
@@ -119,7 +119,7 @@ def predict():
             else:
                 print("comfy is DOWN from mainnnnnnnn")
                 sys.stdout.flush()
-                return jsonify({"predictions":"COMFY DOWN FROM MAIN"})
+                return jsonify({"predictions":[{"answer":"COMFY DOWN FROM MAIN"}]})
             
             with open(file_path, "r") as file:
                 prompt_text = json.load(file)
@@ -164,14 +164,14 @@ def predict():
             sys.stdout.flush()
             return jsonify({"predictions":"donee"}), 200
         
-        return jsonify({"predictions":"user_input was: "+ str(user_input)})
+        return jsonify({"predictions":[{"answer":str("user_input was: "+ str(user_input))}]})
         
 
     except Exception as error:
         print("Exception happened")
         print(error)
         print("Exception written")
-        return jsonify({"predictions":"exceptionn"}), 200
+        return jsonify({"predictions":[{"answer":"exceptionn"}]}), 200
 
 if __name__ == '__main__':
     server_port = os.environ.get('PORT', '8080')
