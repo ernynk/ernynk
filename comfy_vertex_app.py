@@ -162,7 +162,7 @@ def predict():
                 print(directory)
                 
             sys.stdout.flush()
-            return jsonify({"predictions":"donee"}), 200
+            return jsonify({"predictions":[{"answer":"donee"}]}), 200
         
         return jsonify({"predictions":[{"answer":str("user_input was: "+ str(user_input))}]})
         
