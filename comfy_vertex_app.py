@@ -128,7 +128,7 @@ def predict():
             prompt_text["21"]["inputs"]["filename_prefix"] = instance_random
             # prompt_text["12"]["inputs"]["color"] = instance_random
             try:
-                prompt_text["16"]["inputs"]["text"] = user_request
+                prompt_text["16"]["inputs"]["text"] = prediction_input
             except:
                 abc=0
             print("changed prompt from main")
@@ -170,7 +170,7 @@ def predict():
             print("listed directory from main")
 
             blob.upload_from_filename(filename=("./output/" + our_filename))
-            os.remove(path="./output/" + our_filename))
+            os.remove(path="./output/" + our_filename)
             print("uploaded picture from main")
             directories = [d for d in os.listdir("./output")]
             for directory in directories:
