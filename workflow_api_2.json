@@ -1,61 +1,26 @@
 {
-  "14": {
+  "3": {
     "inputs": {
-      "ckpt_name": "deliberateCyber_v20.safetensors"
-    },
-    "class_type": "CheckpointLoaderSimple",
-    "_meta": {
-      "title": "Load Checkpoint"
-    }
-  },
-  "15": {
-    "inputs": {
-      "text": "watermark, text",
-      "clip": [
-        "14",
-        1
-      ]
-    },
-    "class_type": "CLIPTextEncode",
-    "_meta": {
-      "title": "CLIP Text Encode (Prompt)"
-    }
-  },
-  "16": {
-    "inputs": {
-      "text": "close up photo of a woman with a beautiful face, green eyes, red rosy lips",
-      "clip": [
-        "14",
-        1
-      ]
-    },
-    "class_type": "CLIPTextEncode",
-    "_meta": {
-      "title": "CLIP Text Encode (Prompt)"
-    }
-  },
-  "17": {
-    "inputs": {
-      "seed": 297258936888193,
-      "steps": 20,
-      "cfg": 8,
-      "sampler_name": "dpmpp_3m_sde_gpu",
-      "scheduler": "karras",
+      "seed": 184662616329412,
+      "steps": 50,
+      "cfg": 6,
+      "sampler_name": "dpmpp_3m_sde",
+      "scheduler": "exponential",
       "denoise": 1,
       "model": [
-        "14",
+        "4",
         0
       ],
       "positive": [
-        "16",
+        "6",
         0
       ],
       "negative": [
-        "15",
+        "7",
         0
       ],
       "latent_image": [
-        "22",
+        "5",
         0
       ]
     },
@@ -64,14 +29,60 @@
       "title": "KSampler"
     }
   },
-  "20": {
+  "4": {
+    "inputs": {
+      "ckpt_name": "deliberateCyber_v20.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "glamour portrait photo, macro, a captivating vibrant dark green-neon capturing the essence of a cyborg Bedouin sorcerer in fight stance, defying expectations by conjuring a whimsical robot 'freak' from an oversized sedge hat. ethereal, smoky backdrop. throwing a translucent orange/tanslucent purple/black iaidow, weapon, katana, holding sword, 100mm f/2.8 macro lens, atmospheric haze, Film grain, cinematic film still, shallow depth of field, highly detailed, high budget, cinemascope, moody, epic, OverallDetail, gorgeous, 2000s vintage RAW photo, photorealistic, candid camera, color graded cinematic, eye catchlights, atmospheric lighting, skin pores, imperfections, natural, shallow dof",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "positive_prompt"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "text, watermark",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "8": {
     "inputs": {
       "samples": [
-        "17",
+        "3",
         0
       ],
       "vae": [
-        "14",
+        "4",
         2
       ]
     },
@@ -80,28 +91,17 @@
       "title": "VAE Decode"
     }
   },
-  "21": {
+  "9": {
     "inputs": {
-      "filename_prefix": "defaultttt",
+      "filename_prefix": "ComfyUI",
       "images": [
-        "20",
+        "8",
         0
       ]
     },
     "class_type": "SaveImage",
     "_meta": {
       "title": "Save Image"
-    }
-  },
-  "22": {
-    "inputs": {
-      "width": 512,
-      "height": 512,
-      "batch_size": 1
-    },
-    "class_type": "EmptyLatentImage",
-    "_meta": {
-      "title": "Empty Latent Image"
     }
   }
 }
