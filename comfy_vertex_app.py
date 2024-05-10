@@ -136,10 +136,10 @@ def predict():
                 prompt_text = json.load(file)
             print("read workflow from main")
             instance_random = random.randint(10000000, 16000000)
-            prompt_text["21"]["inputs"]["filename_prefix"] = instance_random
+            prompt_text["9"]["inputs"]["filename_prefix"] = instance_random
             # prompt_text["12"]["inputs"]["color"] = instance_random
             try:
-                prompt_text["16"]["inputs"]["text"] = prediction_input
+                prompt_text["6"]["inputs"]["text"] = prediction_input
             except:
                 abc=0
             print("changed prompt from main")
