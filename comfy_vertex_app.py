@@ -165,9 +165,9 @@ def predict():
                 if os.path.exists("./output/" + str(instance_random) + "_00001_.png"):
                     print("there it is: " + str(_while_break) + " seconds")
                     break
-                elif _while_break == 20:
+                elif _while_break == 60:
                     sys.stdout.flush()
-                    return jsonify({"predictions":[{"answer":"waited comfyui for 20 seconds"}]}), 200
+                    return jsonify({"predictions":[{"answer":"waited comfyui for 60 seconds"}]}), 200
                     
                 else:    
                     time.sleep(1)
