@@ -93,7 +93,7 @@ def predict():
             model_link = data["instances"][1]
             model_name = data["instances"][2]
 
-            command = f"""sh -c 'curl -o models/checkpoints/{model_name} -L -H "Content-Type: application/json" -H "Authorization: Bearer e8a51cf9122afd68639c6b15f1bcdd05" {model_link}'"""
+            command = f"""sh -c 'cd models/checkpoints && curl -o {model_name} -L -H "Content-Type: application/json" -H "Authorization: Bearer e8a51cf9122afd68639c6b15f1bcdd05" {model_link}'"""
             print("NEW MODEL COMMAND: " + command)
             replace_file_result = subprocess.run(command, shell=True)
             sys.stdout.flush()
