@@ -84,7 +84,7 @@ def predict():
                     print("comfyui shut down for replacement of container_app")
                 else:
                     print("comfyui was down for replacement of container_app")
-                replace_file_result = subprocess.run(command, shell=True)
+            replace_file_result = subprocess.run(command, shell=True)
             sys.stdout.flush()
             return jsonify({"predictions":[{"answer":replace_file_result.stdout}]}), 200
         
@@ -186,6 +186,7 @@ def predict():
         print("Exception happened")
         print(error)
         print("Exception written")
+        sys.stdout.flush()
         return jsonify({"predictions":[{"answer":"exceptionn"}]}), 200
 
 if __name__ == '__main__':
