@@ -161,7 +161,7 @@ def predict():
                 else:    
                     time.sleep(1)
                     _while_break = _while_break + 1 
-            our_filename = str("./output/" + sorted(os.listdir("./output"))[file_no])
+            our_filename = str(instance_random) + "_00001_.png"
             blob = bucket.blob(our_filename)
             print("listing directory from main")
             directories = [d for d in os.listdir("./output")]
@@ -169,8 +169,8 @@ def predict():
                 print(directory)
             print("listed directory from main")
 
-            blob.upload_from_filename(filename=our_filename)
-            os.remove(path=our_filename)
+            blob.upload_from_filename(filename=("./output/" + our_filename))
+            os.remove(path="./output/" + our_filename))
             print("uploaded picture from main")
             directories = [d for d in os.listdir("./output")]
             for directory in directories:
