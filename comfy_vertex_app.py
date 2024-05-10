@@ -125,10 +125,13 @@ def predict():
                 prompt_text = json.load(file)
             print("read workflow from main")
             instance_random = random.randint(10000000, 16000000)
-            prompt_text["9"]["inputs"]["filename_prefix"] = instance_random
-            prompt_text["12"]["inputs"]["color"] = instance_random
-            # prompt_text["16"]["inputs"]["text"] = user_request
-            print("changed color from main")
+            prompt_text["21"]["inputs"]["filename_prefix"] = instance_random
+            # prompt_text["12"]["inputs"]["color"] = instance_random
+            try:
+                prompt_text["16"]["inputs"]["text"] = user_request
+            except:
+                abc=0
+            print("changed prompt from main")
 
             def queue_prompt(prompt):
                 url = "http://127.0.0.1:8188/prompt"
@@ -158,13 +161,14 @@ def predict():
                 else:    
                     time.sleep(1)
                     _while_break = _while_break + 1 
-            blob = bucket.blob(str(round(time.time(),2)))
+            our_filename = str("./output/" + sorted(os.listdir("./output"))[file_no])
+            blob = bucket.blob(our_filename)
             print("listing directory from main")
             directories = [d for d in os.listdir("./output")]
             for directory in directories:
                 print(directory)
             print("listed directory from main")
-            our_filename = str("./output/" + sorted(os.listdir("./output"))[file_no])
+
             blob.upload_from_filename(filename=our_filename)
             os.remove(path=our_filename)
             print("uploaded picture from main")
