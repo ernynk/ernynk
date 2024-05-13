@@ -152,8 +152,8 @@ def predict():
 
             _while_break = 0
             while True:
-                if os.path.exists("./output/" + str(instance_random) + "_00001.mp4"):
-                    print("there it is: " + str(_while_break) + " seconds")
+                if os.path.exists("./output/" + str(instance_random) + "_00001_.webp"):
+                    print("there it is(webp): " + str(_while_break) + " seconds")
                     break
                 elif _while_break == 60:
                     sys.stdout.flush()
@@ -162,23 +162,37 @@ def predict():
                 else:    
                     time.sleep(1)
                     _while_break = _while_break + 1 
-            our_filename = str(instance_random) + "_00001.mp4"
+                    
+            _while_break = 0
+            while True:
+                if os.path.exists("./output/" + str(instance_random) + "_00001_.png"):
+                    print("there it is(png): " + str(_while_break) + " seconds")
+                    break
+                elif _while_break == 60:
+                    sys.stdout.flush()
+                    return jsonify({"predictions":[{"answer":"waited comfyui for 60 seconds"}]}), 200
+                    
+                else:    
+                    time.sleep(1)
+                    _while_break = _while_break + 1 
+            our_filename_webp = str(instance_random) + "_00001_.webp"
+            our_filename_png = str(instance_random) + "_00001_.png"
             blob = bucket.blob(our_filename)
             print("listing directory from main")
             directories = [d for d in os.listdir("./output")]
             for directory in directories:
                 print(directory)
             print("listed directory from main")
-
-            blob.upload_from_filename(filename=("./output/" + our_filename))
-            os.remove(path="./output/" + our_filename)
+            blob.upload_from_filename(filename=("./output/" + our_filename_webp))
+            os.remove(path="./output/" + our_filename_webp)
+            os.remove(path="./output/" + our_filename_png)
             print("uploaded picture from main")
             directories = [d for d in os.listdir("./output")]
             for directory in directories:
                 print(directory)
                 
             sys.stdout.flush()
-            return jsonify({"predictions":[{"answer":our_filename}]}), 200
+            return jsonify({"predictions":[{"answer":our_filename_webp}]}), 200
         
         return jsonify({"predictions":[{"answer":str("user_input was: "+ str(user_input))}]})
         
