@@ -1,7 +1,7 @@
 {
   "1": {
     "inputs": {
-      "ckpt_name": "epicrealism_naturalSinRC1VAE.safetensors",
+      "ckpt_name": "dreamshaper_8.safetensors",
       "beta_schedule": "sqrt_linear (AnimateDiff)",
       "use_custom_scale_factor": false,
       "scale_factor": 0.18215
