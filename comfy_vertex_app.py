@@ -177,7 +177,7 @@ def predict():
                     _while_break = _while_break + 1 
             our_filename_webp = str(instance_random) + "_00001_.webp"
             our_filename_png = str(instance_random) + "_00001_.png"
-            blob = bucket.blob(our_filename)
+            blob = bucket.blob(our_filename_webp)
             print("listing directory from main")
             directories = [d for d in os.listdir("./output")]
             for directory in directories:
