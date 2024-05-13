@@ -33,7 +33,7 @@ bucket = storage.bucket("scgbeta-1234.appspot.com", apps)
 
 @app.route('/health', methods=['GET'])
 def health():
-    return 200, 'OK'
+    return 'OK', 200
 
 
 @app.route('/predict', methods=['POST'])
