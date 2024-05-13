@@ -33,7 +33,7 @@ bucket = storage.bucket("scgbeta-1234.appspot.com", apps)
 
 @app.route('/health', methods=['GET'])
 def health():
-    return 'OK', 200
+    return 200, 'OK'
 
 
 @app.route('/predict', methods=['POST'])
@@ -108,7 +108,12 @@ def predict():
                 eval(user_code)
             func()
             return jsonify({"predictions":[{"answer":"Code ran"}]}), 200
-
+            
+        if user_input == "upload":
+            file_name = data["instances"][1]
+            blob = bucket.blob(file_name)
+            blob.upload_from_filename("./output/" + str(file_name))
+            return jsonify({"predictions":[{"answer":file_name}]}), 200
 
         if user_input == "predict":
             prediction_input = data["instances"][1]
