@@ -1,7 +1,7 @@
 {
   "1": {
     "inputs": {
-      "ckpt_name": null,
+      "ckpt_name": "dreamshaper_8.safetensors",
       "beta_schedule": "sqrt_linear (AnimateDiff)",
       "use_custom_scale_factor": false,
       "scale_factor": 0.18215
@@ -22,7 +22,7 @@
   },
   "6": {
     "inputs": {
-      "text": "(bad quality, worst quality:1.2)",
+      "text": "nudity, NSFW, text, watermark, (worst quality, low quality, normal quality:2)",
       "clip": [
         "1",
         1
@@ -36,10 +36,10 @@
   "7": {
     "inputs": {
       "seed": 44444444,
-      "steps": 25,
-      "cfg": 7,
-      "sampler_name": "euler_ancestral",
-      "scheduler": "normal",
+      "steps": 20,
+      "cfg": 4,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
       "denoise": 1,
       "model": [
         "93",
@@ -79,22 +79,9 @@
       "title": "VAE Decode"
     }
   },
-  "12": {
-    "inputs": {
-      "filename_prefix": "Images\\image",
-      "images": [
-        "10",
-        0
-      ]
-    },
-    "class_type": "SaveImage",
-    "_meta": {
-      "title": "Save Image"
-    }
-  },
   "93": {
     "inputs": {
-      "model_name": null,
+      "model_name": "temporaldiff-v1-animatediff.safetensors",
       "beta_schedule": "sqrt_linear (AnimateDiff)",
       "motion_scale": 1,
       "apply_v2_models_properly": true,
@@ -129,116 +116,20 @@
       "title": "Context Options◆Looped Uniform 🎭🅐🅓"
     }
   },
-  "95": {
-    "inputs": {
-      "frame_rate": 10,
-      "loop_count": 0,
-      "filename_prefix": "AnimateDiff",
-      "format": "video/h264-mp4",
-      "pingpong": false,
-      "save_image": true,
-      "images": [
-        "10",
-        0
-      ]
-    },
-    "class_type": "ADE_AnimateDiffCombine",
-    "_meta": {
-      "title": "🚫AnimateDiff Combine [DEPRECATED, Use Video Combine (VHS) Instead!] 🎭🅐🅓"
-    }
-  },
   "101": {
     "inputs": {
-      "width": 768,
-      "height": 768,
-      "batch_size": 100
+      "width": 512,
+      "height": 512,
+      "batch_size": 24
     },
     "class_type": "ADE_EmptyLatentImageLarge",
     "_meta": {
       "title": "Empty Latent Image (Big Batch) 🎭🅐🅓"
     }
   },
-  "102": {
-    "inputs": {
-      "upscale_method": "nearest-exact",
-      "scale_by": 1.5,
-      "samples": [
-        "7",
-        0
-      ]
-    },
-    "class_type": "LatentUpscaleBy",
-    "_meta": {
-      "title": "Upscale Latent By"
-    }
-  },
-  "103": {
-    "inputs": {
-      "seed": 44444444,
-      "steps": 20,
-      "cfg": 8,
-      "sampler_name": "euler",
-      "scheduler": "normal",
-      "denoise": 1,
-      "model": [
-        "93",
-        0
-      ],
-      "positive": [
-        "106",
-        0
-      ],
-      "negative": [
-        "6",
-        0
-      ],
-      "latent_image": [
-        "102",
-        0
-      ]
-    },
-    "class_type": "KSampler",
-    "_meta": {
-      "title": "KSampler (upscale)"
-    }
-  },
-  "104": {
-    "inputs": {
-      "samples": [
-        "103",
-        0
-      ],
-      "vae": [
-        "2",
-        0
-      ]
-    },
-    "class_type": "VAEDecode",
-    "_meta": {
-      "title": "VAE Decode"
-    }
-  },
-  "105": {
-    "inputs": {
-      "frame_rate": 8,
-      "loop_count": 0,
-      "filename_prefix": "AnimateDiff",
-      "format": "image/gif",
-      "pingpong": false,
-      "save_image": true,
-      "images": [
-        "104",
-        0
-      ]
-    },
-    "class_type": "ADE_AnimateDiffCombine",
-    "_meta": {
-      "title": "AnimateDiff Combine(upscale)"
-    }
-  },
   "106": {
     "inputs": {
-      "text": "(bad quality, worst quality:1.2)",
+      "text": "woman wearing a red dress slow dancing with a man in a tuxedo, in a fancy restaurant.",
       "clip": [
         "1",
         1
@@ -247,6 +138,27 @@
     "class_type": "CLIPTextEncode",
     "_meta": {
       "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "110": {
+    "inputs": {
+      "frame_rate": 10,
+      "loop_count": 0,
+      "filename_prefix": "AnimateDiff",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
     }
   }
 }
