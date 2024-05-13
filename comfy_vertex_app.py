@@ -132,7 +132,7 @@ def predict():
                 return jsonify({"predictions":[{"answer":"COMFY DOWN FROM MAIN"}]})
             
             prompt_text = json.loads(requests.get("https://raw.githubusercontent.com/ernynk/ernynk/main/workflow_api.json").content.decode())
-            prompt_text = prompt_text[f"{filename_prefix_number}"]["inputs"]["filename_prefix"] = str(instance_random)
+            prompt_text[f"{filename_prefix_number}"]["inputs"]["filename_prefix"] = str(instance_random)
 
             def queue_prompt(prompt):
                 url = "http://127.0.0.1:8188/prompt"
