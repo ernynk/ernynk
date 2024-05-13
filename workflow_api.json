@@ -145,7 +145,7 @@
       "frame_rate": 10,
       "loop_count": 0,
       "filename_prefix": "AnimateDiff",
-      "format": "video/h264-mp4",
+      "format": "image/webp",
       "pingpong": false,
       "save_image": true,
       "images": [
