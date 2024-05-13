@@ -4,7 +4,7 @@
       "ckpt_name": "dreamshaper_8.safetensors",
       "beta_schedule": "sqrt_linear (AnimateDiff)",
       "use_custom_scale_factor": false,
-      "scale_factor": 0.18215
+      "scale_factor": 0.5
     },
     "class_type": "CheckpointLoaderSimpleWithNoiseSelect",
     "_meta": {
@@ -35,8 +35,8 @@
   },
   "7": {
     "inputs": {
-      "seed": 44444444,
-      "steps": 20,
+      "seed": 654651,
+      "steps": 40,
       "cfg": 4,
       "sampler_name": "dpmpp_2m_sde",
       "scheduler": "karras",
