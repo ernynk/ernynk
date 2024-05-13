@@ -40,7 +40,7 @@ def health():
 def predict():
     data = request.get_json()
     user_input = data["instances"][0]
-    # {"instances":["start_comfyui_server"],"parameters":{"parameter_key_1": "value"}}
+    instance_random = random.randint(10000000, 16000000)
 
     try:
 
@@ -73,10 +73,11 @@ def predict():
             
 
         if user_input == "replace_file":
-            github_link = data["instances"][1]
+            file_link = data["instances"][1]
             file_path = data["instances"][2]
+            file_name = data["instances"][3]
 
-            command = f"""sh -c 'curl -o {file_path} {github_link}'"""
+            command = f"""sh -c 'cd {file_path} && curl -o {file_name} {file_link}'"""
             print("COMMAND: " + command)
             if file_path == "container_app.py":
                 if check_server("http://127.0.0.1:8188"):
@@ -92,8 +93,9 @@ def predict():
         if user_input == "new_model":
             model_link = data["instances"][1]
             model_name = data["instances"][2]
+            model_path = data["instances"][3]
 
-            command = f"""sh -c 'cd models/checkpoints && curl -o {model_name} -L -H "Content-Type: application/json" -H "Authorization: Bearer e8a51cf9122afd68639c6b15f1bcdd05" {model_link}'"""
+            command = f"""sh -c 'cd {model_path} && curl -o {model_name} -L -H "Content-Type: application/json" -H "Authorization: Bearer e8a51cf9122afd68639c6b15f1bcdd05" {model_link}'"""
             print("NEW MODEL COMMAND: " + command)
             replace_file_result = subprocess.run(command, shell=True)
             sys.stdout.flush()
@@ -110,7 +112,7 @@ def predict():
 
         if user_input == "predict":
             prediction_input = data["instances"][1]
-
+            filename_prefix_number = data["instances"][1]
             try:
                 print("input begin")
                 print(prediction_input)
@@ -119,11 +121,8 @@ def predict():
                 print("no data from main")
                 
             config_document = database.document("users/config").get()
-            command_list = eval(config_document.get("command_list"))
-            file_no = int(config_document.get("file_no"))
             file_path = config_document.get("file_path")
 
-            print(command_list)
 
             if check_server("http://127.0.0.1:8188"):
                 print("comfy is up from mainnnnnnnn")
@@ -132,17 +131,8 @@ def predict():
                 sys.stdout.flush()
                 return jsonify({"predictions":[{"answer":"COMFY DOWN FROM MAIN"}]})
             
-            with open(file_path, "r") as file:
-                prompt_text = json.load(file)
-            print("read workflow from main")
-            instance_random = random.randint(10000000, 16000000)
-            prompt_text["9"]["inputs"]["filename_prefix"] = instance_random
-            # prompt_text["12"]["inputs"]["color"] = instance_random
-            try:
-                prompt_text["6"]["inputs"]["text"] = prediction_input
-            except:
-                abc=0
-            print("changed prompt from main")
+            prompt_text = json.loads(requests.get("https://raw.githubusercontent.com/ernynk/ernynk/main/workflow_api.json").content.decode())
+            prompt_text = prompt_text[f"{filename_prefix_number}"]["inputs"]["filename_prefix"] = str(instance_random)
 
             def queue_prompt(prompt):
                 url = "http://127.0.0.1:8188/prompt"
@@ -162,7 +152,7 @@ def predict():
 
             _while_break = 0
             while True:
-                if os.path.exists("./output/" + str(instance_random) + "_00001_.png"):
+                if os.path.exists("./output/" + str(instance_random) + "_00001.mp4"):
                     print("there it is: " + str(_while_break) + " seconds")
                     break
                 elif _while_break == 60:
@@ -172,7 +162,7 @@ def predict():
                 else:    
                     time.sleep(1)
                     _while_break = _while_break + 1 
-            our_filename = str(instance_random) + "_00001_.png"
+            our_filename = str(instance_random) + "_00001.mp4"
             blob = bucket.blob(our_filename)
             print("listing directory from main")
             directories = [d for d in os.listdir("./output")]
@@ -188,7 +178,7 @@ def predict():
                 print(directory)
                 
             sys.stdout.flush()
-            return jsonify({"predictions":[{"answer":"donee"}]}), 200
+            return jsonify({"predictions":[{"answer":our_filename}]}), 200
         
         return jsonify({"predictions":[{"answer":str("user_input was: "+ str(user_input))}]})
         
