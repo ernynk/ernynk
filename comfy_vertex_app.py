@@ -34,7 +34,9 @@ def get_own_subprocesses():
         all_subprocesses.append(child)
 
     return all_subprocesses
-    
+
+h = {"Cache-Control": "no-cache"}
+
 cred = credentials.Certificate('scgbeta-1234-af5e222bb1fa.json')
 apps = initialize_app(credential=cred)
 database = firestore.client(apps)
@@ -153,7 +155,7 @@ def predict():
                 sys.stdout.flush()
                 return jsonify({"predictions":[{"answer":"COMFY DOWN FROM MAIN"}]})
             
-            prompt_text = json.loads(requests.get("https://raw.githubusercontent.com/ernynk/ernynk/main/workflow_api.json").content.decode())
+            prompt_text = json.loads(requests.get("https://raw.githubusercontent.com/ernynk/ernynk/main/workflow_api.json", headers=h).content.decode())
             prompt_text[f"{filename_prefix_number}"]["inputs"]["filename_prefix"] = str(instance_random)
 
             def queue_prompt(prompt):
