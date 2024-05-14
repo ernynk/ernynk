@@ -11,15 +11,6 @@
       "title": "Load Checkpoint w/ Noise Select 🎭🅐🅓"
     }
   },
-  "2": {
-    "inputs": {
-      "vae_name": "vae-ft-mse-840000-ema-pruned.safetensors"
-    },
-    "class_type": "VAELoader",
-    "_meta": {
-      "title": "Load VAE"
-    }
-  },
   "6": {
     "inputs": {
       "text": "(deformed iris, deformed pupils), text, worst quality, low quality, ugly,",
@@ -36,7 +27,7 @@
   "7": {
     "inputs": {
       "seed": 2039823409429,
-      "steps": 10,
+      "steps": 30,
       "cfg": 3,
       "sampler_name": "dpmpp_sde",
       "scheduler": "karras",
@@ -67,7 +58,7 @@
     "inputs": {
       "model_name": "mm_sd_v15_v2.ckpt",
       "beta_schedule": "sqrt_linear (AnimateDiff)",
-      "motion_scale": 1,
+      "motion_scale": 0.7000000000000001,
       "apply_v2_models_properly": true,
       "model": [
         "1",
@@ -118,8 +109,8 @@
         0
       ],
       "vae": [
-        "2",
-        0
+        "1",
+        2
       ]
     },
     "class_type": "VAEDecode",
@@ -129,7 +120,7 @@
   },
   "107": {
     "inputs": {
-      "text": "photo of the warrior Aragorn from Lord of the Rings, film grain, cinematic film still, 8k hd, portrait",
+      "text": "photo of the warrior Aragorn from Lord of the Rings, film grain, cinematic film, 8k hd, portrait",
       "clip": [
         "1",
         1
