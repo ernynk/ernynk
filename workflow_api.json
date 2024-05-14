@@ -171,24 +171,6 @@
       "title": "VAE Decode"
     }
   },
-  "106": {
-    "inputs": {
-      "frame_rate": 24,
-      "loop_count": 0,
-      "filename_prefix": "AnimateDiff",
-      "format": "image/webp",
-      "pingpong": false,
-      "save_output": true,
-      "images": [
-        "104",
-        0
-      ]
-    },
-    "class_type": "VHS_VideoCombine",
-    "_meta": {
-      "title": "Video Combine 🎥🅥🅗🅢"
-    }
-  },
   "107": {
     "inputs": {
       "text": "woman walking, red sundress, sunny day, warm weather, (good quality, best quality:1.2)",
@@ -200,6 +182,24 @@
     "class_type": "CLIPTextEncode",
     "_meta": {
       "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "108": {
+    "inputs": {
+      "frame_rate": 24,
+      "loop_count": 0,
+      "filename_prefix": "AnimateDiff",
+      "format": "image/webp",
+      "pingpong": false,
+      "save_image": true,
+      "images": [
+        "104",
+        0
+      ]
+    },
+    "class_type": "ADE_AnimateDiffCombine",
+    "_meta": {
+      "title": "🚫AnimateDiff Combine [DEPRECATED, Use Video Combine (VHS) Instead!] 🎭🅐🅓"
     }
   }
 }
