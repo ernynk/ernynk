@@ -4,7 +4,7 @@
       "ckpt_name": "dreamshaper_8.safetensors",
       "beta_schedule": "sqrt_linear (AnimateDiff)",
       "use_custom_scale_factor": false,
-      "scale_factor": 0.5
+      "scale_factor": 0.18215
     },
     "class_type": "CheckpointLoaderSimpleWithNoiseSelect",
     "_meta": {
@@ -22,7 +22,7 @@
   },
   "6": {
     "inputs": {
-      "text": "cartoon, painting, illustration, asian, chinese, (worst quality, low quality, normal quality:2)",
+      "text": "(bad quality, worst quality:1.2)",
       "clip": [
         "1",
         1
@@ -35,18 +35,18 @@
   },
   "7": {
     "inputs": {
-      "seed": 654651,
+      "seed": 44444444,
       "steps": 40,
-      "cfg": 4,
-      "sampler_name": "dpmpp_2m_sde",
-      "scheduler": "karras",
+      "cfg": 7,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
       "denoise": 1,
       "model": [
         "93",
         0
       ],
       "positive": [
-        "106",
+        "100",
         0
       ],
       "negative": [
@@ -63,25 +63,9 @@
       "title": "KSampler"
     }
   },
-  "10": {
-    "inputs": {
-      "samples": [
-        "7",
-        0
-      ],
-      "vae": [
-        "2",
-        0
-      ]
-    },
-    "class_type": "VAEDecode",
-    "_meta": {
-      "title": "VAE Decode"
-    }
-  },
   "93": {
     "inputs": {
-      "model_name": "temporaldiff-v1-animatediff.safetensors",
+      "model_name": "mm_sd_v15_v2.ckpt",
       "beta_schedule": "sqrt_linear (AnimateDiff)",
       "motion_scale": 1,
       "apply_v2_models_properly": true,
@@ -116,46 +100,115 @@
       "title": "Context Options◆Looped Uniform 🎭🅐🅓"
     }
   },
+  "100": {
+    "inputs": {
+      "text": "\"0\" :\"spring day, blossoms, flowers, cloudy\",\n\"25\" :\"summer day, sunny, leaves\",\n\"50\" :\"fall day, colorful leaves dancing in the wind\",\n\"75\" :\"winter day, snowing, cold, jacket\"\n",
+      "max_frames": 120,
+      "print_output": " (Masterpiece, best quality:1.2), closeup, close-up, a girl in a forest",
+      "pre_text": "",
+      "app_text": "0",
+      "start_frame": 0,
+      "pw_a": 0,
+      "pw_b": 0,
+      "pw_c": 0,
+      "pw_d": 0,
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "BatchPromptSchedule",
+    "_meta": {
+      "title": "Batch Prompt Schedule 📅🅕🅝"
+    }
+  },
   "101": {
     "inputs": {
-      "width": 512,
-      "height": 512,
-      "batch_size": 24
+      "width": 768,
+      "height": 768,
+      "batch_size": 100
     },
     "class_type": "ADE_EmptyLatentImageLarge",
     "_meta": {
       "title": "Empty Latent Image (Big Batch) 🎭🅐🅓"
     }
   },
-  "106": {
+  "102": {
     "inputs": {
-      "text": "woman wearing a red dress slow dancing with a man in a tuxedo, in a fancy restaurant.",
-      "clip": [
-        "1",
-        1
+      "upscale_method": "nearest-exact",
+      "scale_by": 1.5,
+      "samples": [
+        "7",
+        0
       ]
     },
-    "class_type": "CLIPTextEncode",
+    "class_type": "LatentUpscaleBy",
     "_meta": {
-      "title": "CLIP Text Encode (Prompt)"
+      "title": "Upscale Latent By"
     }
   },
-  "112": {
+  "103": {
     "inputs": {
-      "frame_rate": 10,
+      "seed": 44444444,
+      "steps": 25,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "93",
+        0
+      ],
+      "positive": [
+        "100",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "latent_image": [
+        "102",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler (upscale)"
+    }
+  },
+  "104": {
+    "inputs": {
+      "samples": [
+        "103",
+        0
+      ],
+      "vae": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "106": {
+    "inputs": {
+      "frame_rate": 24,
       "loop_count": 0,
       "filename_prefix": "AnimateDiff",
       "format": "image/webp",
       "pingpong": false,
-      "save_image": true,
+      "save_output": true,
       "images": [
-        "10",
+        "104",
         0
       ]
     },
-    "class_type": "ADE_AnimateDiffCombine",
+    "class_type": "VHS_VideoCombine",
     "_meta": {
-      "title": "🚫AnimateDiff Combine [DEPRECATED, Use Video Combine (VHS) Instead!] 🎭🅐🅓"
+      "title": "Video Combine 🎥🅥🅗🅢"
     }
   }
 }
