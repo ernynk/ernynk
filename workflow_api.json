@@ -46,7 +46,7 @@
         0
       ],
       "positive": [
-        "100",
+        "107",
         0
       ],
       "negative": [
@@ -100,28 +100,6 @@
       "title": "Context Options◆Looped Uniform 🎭🅐🅓"
     }
   },
-  "100": {
-    "inputs": {
-      "text": "\"0\" :\"spring day, blossoms, flowers, cloudy\",\n\"25\" :\"summer day, sunny, leaves\",\n\"50\" :\"fall day, colorful leaves dancing in the wind\",\n\"75\" :\"winter day, snowing, cold, jacket\"\n",
-      "max_frames": 120,
-      "print_output": " (Masterpiece, best quality:1.2), closeup, close-up, a girl in a forest",
-      "pre_text": "",
-      "app_text": "0",
-      "start_frame": 0,
-      "pw_a": 0,
-      "pw_b": 0,
-      "pw_c": 0,
-      "pw_d": 0,
-      "clip": [
-        "1",
-        1
-      ]
-    },
-    "class_type": "BatchPromptSchedule",
-    "_meta": {
-      "title": "Batch Prompt Schedule 📅🅕🅝"
-    }
-  },
   "101": {
     "inputs": {
       "width": 768,
@@ -160,7 +138,7 @@
         0
       ],
       "positive": [
-        "100",
+        "107",
         0
       ],
       "negative": [
@@ -209,6 +187,19 @@
     "class_type": "VHS_VideoCombine",
     "_meta": {
       "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "107": {
+    "inputs": {
+      "text": "woman walking, red sundress, sunny day, warm weather, (good quality, best quality:1.2)",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
     }
   }
 }
