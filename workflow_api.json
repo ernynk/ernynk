@@ -35,7 +35,7 @@
   },
   "7": {
     "inputs": {
-      "seed": 2946499990,
+      "seed": 3346112079,
       "steps": 15,
       "cfg": 3,
       "sampler_name": "dpmpp_sde",
