@@ -22,7 +22,7 @@
   },
   "6": {
     "inputs": {
-      "text": "(low quality, worst quality:1.4), cgi,  text, signature, watermark, extra limbs, cleavage",
+      "text": "(deformed iris, deformed pupils), text, worst quality, low quality, ugly,",
       "clip": [
         "1",
         1
@@ -35,7 +35,7 @@
   },
   "7": {
     "inputs": {
-      "seed": 3346112079,
+      "seed": 2039823409429,
       "steps": 15,
       "cfg": 3,
       "sampler_name": "dpmpp_sde",
@@ -85,7 +85,7 @@
   },
   "94": {
     "inputs": {
-      "context_length": 16,
+      "context_length": 36,
       "context_stride": 1,
       "context_overlap": 4,
       "context_schedule": "uniform",
@@ -129,7 +129,7 @@
   },
   "107": {
     "inputs": {
-      "text": "cinematic film still, close up, photo of redheaded girl near grasses, fictional landscapes, (intense sunlight:1.4), realist detail, brooding mood, ue5, detailed character expressions, light amber and red, amazing quality, wallpaper, analog film grain, jacket",
+      "text": "photo of the warrior Aragorn from Lord of the Rings, film grain, cinematic film still, 8k hd, portrait",
       "clip": [
         "1",
         1
