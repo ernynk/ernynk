@@ -1,4 +1,4 @@
-import time, os, subprocess, sys, json, random
+import time, os, subprocess, sys, json, random, psutil
 from flask import Flask, jsonify, request
 import requests
 from firebase_admin import firestore, credentials, initialize_app, storage
@@ -24,7 +24,17 @@ def check_server(url) -> bool:
     except Exception as e:
         print(f"An error occurred: {e}")
         return False
-            
+
+def get_own_subprocesses():
+    parent_pid = os.getpid()
+    all_subprocesses = []
+
+    parent = psutil.Process(parent_pid)
+    for child in parent.children(recursive=False):
+        all_subprocesses.append(child)
+
+    return all_subprocesses
+    
 cred = credentials.Certificate('scgbeta-1234-af5e222bb1fa.json')
 apps = initialize_app(credential=cred)
 database = firestore.client(apps)
@@ -81,7 +91,11 @@ def predict():
             print("COMMAND: " + command)
             if file_path == "container_app.py":
                 if check_server("http://127.0.0.1:8188"):
-                    comfyui_process.terminate()
+                    subs = get_own_subprocesses()
+                    for sub in subs:
+                        sub.terminate()
+                        print(sub)
+                        print("terminated")
                     print("comfyui shut down for replacement of container_app")
                 else:
                     print("comfyui was down for replacement of container_app")
