@@ -36,7 +36,7 @@
   "7": {
     "inputs": {
       "seed": 2039823409429,
-      "steps": 15,
+      "steps": 10,
       "cfg": 3,
       "sampler_name": "dpmpp_sde",
       "scheduler": "karras",
@@ -85,7 +85,7 @@
   },
   "94": {
     "inputs": {
-      "context_length": 36,
+      "context_length": 32,
       "context_stride": 1,
       "context_overlap": 4,
       "context_schedule": "uniform",
@@ -104,7 +104,7 @@
     "inputs": {
       "width": 512,
       "height": 768,
-      "batch_size": 36
+      "batch_size": 32
     },
     "class_type": "ADE_EmptyLatentImageLarge",
     "_meta": {
@@ -142,7 +142,7 @@
   },
   "108": {
     "inputs": {
-      "frame_rate": 12,
+      "frame_rate": 8,
       "loop_count": 0,
       "filename_prefix": "AnimateDiff",
       "format": "image/webp",
