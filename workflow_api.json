@@ -1,21 +1,59 @@
 {
-  "1": {
+  "3": {
     "inputs": {
-      "ckpt_name": "dreamshaper_8.safetensors",
-      "beta_schedule": "sqrt_linear (AnimateDiff)",
-      "use_custom_scale_factor": false,
-      "scale_factor": 0.18215
+      "seed": 156680208700286,
+      "steps": 100,
+      "cfg": 8,
+      "sampler_name": "dpmpp_3m_sde_gpu",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
     },
-    "class_type": "CheckpointLoaderSimpleWithNoiseSelect",
+    "class_type": "KSampler",
     "_meta": {
-      "title": "Load Checkpoint w/ Noise Select 🎭🅐🅓"
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "deliberateCyber_v20.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
     }
   },
   "6": {
     "inputs": {
-      "text": "(deformed iris, deformed pupils), text, worst quality, low quality, ugly,",
+      "text": "photo of the warrior Aragorn from Lord of the Rings, film grain, cinematic film still, 8k hd, portrait\n",
       "clip": [
-        "1",
+        "4",
         1
       ]
     },
@@ -26,103 +64,9 @@
   },
   "7": {
     "inputs": {
-      "seed": 2039823409429,
-      "steps": 30,
-      "cfg": 3,
-      "sampler_name": "dpmpp_sde_gpu",
-      "scheduler": "karras",
-      "denoise": 1,
-      "model": [
-        "93",
-        0
-      ],
-      "positive": [
-        "107",
-        0
-      ],
-      "negative": [
-        "6",
-        0
-      ],
-      "latent_image": [
-        "101",
-        0
-      ]
-    },
-    "class_type": "KSampler",
-    "_meta": {
-      "title": "KSampler"
-    }
-  },
-  "93": {
-    "inputs": {
-      "model_name": "mm_sd_v15_v2.ckpt",
-      "beta_schedule": "sqrt_linear (AnimateDiff)",
-      "motion_scale": 0.7000000000000001,
-      "apply_v2_models_properly": true,
-      "model": [
-        "1",
-        0
-      ],
-      "context_options": [
-        "94",
-        0
-      ]
-    },
-    "class_type": "ADE_AnimateDiffLoaderWithContext",
-    "_meta": {
-      "title": "AnimateDiff Loader [Legacy] 🎭🅐🅓①"
-    }
-  },
-  "94": {
-    "inputs": {
-      "context_length": 32,
-      "context_stride": 1,
-      "context_overlap": 4,
-      "context_schedule": "uniform",
-      "closed_loop": false,
-      "fuse_method": "flat",
-      "use_on_equal_length": false,
-      "start_percent": 0,
-      "guarantee_steps": 1
-    },
-    "class_type": "ADE_AnimateDiffUniformContextOptions",
-    "_meta": {
-      "title": "Context Options◆Looped Uniform 🎭🅐🅓"
-    }
-  },
-  "101": {
-    "inputs": {
-      "width": 512,
-      "height": 768,
-      "batch_size": 32
-    },
-    "class_type": "ADE_EmptyLatentImageLarge",
-    "_meta": {
-      "title": "Empty Latent Image (Big Batch) 🎭🅐🅓"
-    }
-  },
-  "104": {
-    "inputs": {
-      "samples": [
-        "7",
-        0
-      ],
-      "vae": [
-        "1",
-        2
-      ]
-    },
-    "class_type": "VAEDecode",
-    "_meta": {
-      "title": "VAE Decode"
-    }
-  },
-  "107": {
-    "inputs": {
-      "text": "photo of the warrior Aragorn from Lord of the Rings, film grain, cinematic film, 8k hd, portrait",
+      "text": "(deformed iris, deformed pupils), text, worst quality, low quality, ugly,",
       "clip": [
-        "1",
+        "4",
         1
       ]
     },
@@ -131,22 +75,69 @@
       "title": "CLIP Text Encode (Prompt)"
     }
   },
-  "108": {
+  "8": {
     "inputs": {
-      "frame_rate": 8,
-      "loop_count": 0,
-      "filename_prefix": "AnimateDiff",
-      "format": "image/webp",
-      "pingpong": false,
-      "save_image": true,
+      "samples": [
+        "10",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
       "images": [
-        "104",
+        "8",
         0
       ]
     },
-    "class_type": "ADE_AnimateDiffCombine",
+    "class_type": "SaveImage",
     "_meta": {
-      "title": "🚫AnimateDiff Combine [DEPRECATED, Use Video Combine (VHS) Instead!] 🎭🅐🅓"
+      "title": "Save Image"
+    }
+  },
+  "10": {
+    "inputs": {
+      "seed": 0,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "latent_image": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "12": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "scale_by": 2,
+      "samples": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "LatentUpscaleBy",
+    "_meta": {
+      "title": "Upscale Latent By"
     }
   }
 }
