@@ -31,7 +31,7 @@
   },
   "4": {
     "inputs": {
-      "ckpt_name": "deliberateCyber_v20.safetensors"
+      "ckpt_name": "dreamshaper_8.safetensors"
     },
     "class_type": "CheckpointLoaderSimple",
     "_meta": {
