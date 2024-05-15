@@ -1,8 +1,8 @@
 {
   "3": {
     "inputs": {
-      "seed": 156680208700286,
-      "steps": 100,
+      "seed": 811651651,
+      "steps": 80,
       "cfg": 8,
       "sampler_name": "dpmpp_3m_sde_gpu",
       "scheduler": "karras",
@@ -31,7 +31,7 @@
   },
   "4": {
     "inputs": {
-      "ckpt_name": "dreamshaper_8.safetensors"
+      "ckpt_name": "deliberateCyber_v20.safetensors"
     },
     "class_type": "CheckpointLoaderSimple",
     "_meta": {
@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "photo of the warrior Aragorn from Lord of the Rings, film grain, cinematic film still, 8k hd, portrait",
+      "text": "photo of the warrior Aragorn from Lord of the Rings, film grain, cinematic film still, 8k hd, portrait\n",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "(deformed iris, deformed pupils), text, worst quality, low quality, ugly",
+      "text": "(deformed iris, deformed pupils), text, worst quality, low quality, ugly,",
       "clip": [
         "4",
         1
@@ -82,8 +82,8 @@
         0
       ],
       "vae": [
-        "14",
-        0
+        "4",
+        2
       ]
     },
     "class_type": "VAEDecode",
@@ -102,15 +102,6 @@
     "class_type": "SaveImage",
     "_meta": {
       "title": "Save Image"
-    }
-  },
-  "14": {
-    "inputs": {
-      "vae_name": "vae-ft-mse-840000-ema-pruned.safetensors"
-    },
-    "class_type": "VAELoader",
-    "_meta": {
-      "title": "Load VAE"
     }
   }
 }
