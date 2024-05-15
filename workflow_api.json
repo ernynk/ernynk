@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "photo of the warrior Aragorn from Lord of the Rings, film grain, cinematic film still, 8k hd, portrait\n",
+      "text": "photo of the warrior Aragorn from Lord of the Rings, film grain, cinematic film still, 8k hd, portrait",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "(deformed iris, deformed pupils), text, worst quality, low quality, ugly,",
+      "text": "(deformed iris, deformed pupils), text, worst quality, low quality, ugly",
       "clip": [
         "4",
         1
@@ -75,88 +75,15 @@
       "title": "CLIP Text Encode (Prompt)"
     }
   },
-  "8": {
-    "inputs": {
-      "samples": [
-        "11",
-        0
-      ],
-      "vae": [
-        "4",
-        2
-      ]
-    },
-    "class_type": "VAEDecode",
-    "_meta": {
-      "title": "VAE Decode"
-    }
-  },
-  "9": {
-    "inputs": {
-      "filename_prefix": "ComfyUI",
-      "images": [
-        "8",
-        0
-      ]
-    },
-    "class_type": "SaveImage",
-    "_meta": {
-      "title": "Save Image"
-    }
-  },
-  "10": {
-    "inputs": {
-      "upscale_method": "nearest-exact",
-      "scale_by": 2,
-      "samples": [
-        "3",
-        0
-      ]
-    },
-    "class_type": "LatentUpscaleBy",
-    "_meta": {
-      "title": "Upscale Latent By"
-    }
-  },
-  "11": {
-    "inputs": {
-      "seed": 543252353425,
-      "steps": 20,
-      "cfg": 8,
-      "sampler_name": "euler",
-      "scheduler": "normal",
-      "denoise": 1,
-      "model": [
-        "4",
-        0
-      ],
-      "positive": [
-        "6",
-        0
-      ],
-      "negative": [
-        "7",
-        0
-      ],
-      "latent_image": [
-        "10",
-        0
-      ]
-    },
-    "class_type": "KSampler",
-    "_meta": {
-      "title": "KSampler"
-    }
-  },
   "12": {
     "inputs": {
       "samples": [
-        "10",
+        "3",
         0
       ],
       "vae": [
-        "4",
-        2
+        "14",
+        0
       ]
     },
     "class_type": "VAEDecode",
@@ -175,6 +102,15 @@
     "class_type": "SaveImage",
     "_meta": {
       "title": "Save Image"
+    }
+  },
+  "14": {
+    "inputs": {
+      "vae_name": "vae-ft-mse-840000-ema-pruned.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
     }
   }
 }
