@@ -40,7 +40,7 @@
   },
   "5": {
     "inputs": {
-      "width": 1024,
+      "width": 576,
       "height": 1024,
       "batch_size": 1
     },
@@ -51,7 +51,7 @@
   },
   "6": {
     "inputs": {
-      "text": "photo of the warrior Aragorn from Lord of the Rings, film grain, cinematic film still, 8k hd, portrait\n",
+      "text": "photo of the president Doneal Trump of USA, film grain, cinematic film still, 8k hd, portrait",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "(deformed iris, deformed pupils), text, worst quality, low quality, ugly,",
+      "text": "(deformed iris, deformed pupils), text, worst quality, low quality, ugly",
       "clip": [
         "4",
         1
