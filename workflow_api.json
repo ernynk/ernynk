@@ -49,7 +49,7 @@
   },
   "78": {
     "inputs": {
-      "image": "StyleAligned_00015_ (1).png",
+      "image": "image.png",
       "upload": "image"
     },
     "class_type": "LoadImage",
