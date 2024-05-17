@@ -59,9 +59,9 @@
   },
   "79": {
     "inputs": {
-      "seed": 284988429,
+      "seed": 2342342234,
       "steps": 10,
-      "cfg": 8,
+      "cfg": 5,
       "sampler_name": "dpmpp_2m_sde_gpu",
       "scheduler": "karras",
       "denoise": 1,
@@ -120,8 +120,8 @@
         0
       ],
       "vae": [
-        "56",
-        2
+        "92",
+        0
       ]
     },
     "class_type": "VAEDecode",
@@ -151,6 +151,15 @@
     "class_type": "SaveImage",
     "_meta": {
       "title": "Save Image"
+    }
+  },
+  "92": {
+    "inputs": {
+      "vae_name": "sdxl_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
     }
   }
 }
