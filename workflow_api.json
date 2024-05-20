@@ -1,7 +1,7 @@
 {
   "56": {
     "inputs": {
-      "ckpt_name": "deliberateCyber_v20.safetensors"
+      "ckpt_name": "sd_xl_turbo_1.0.safetensors"
     },
     "class_type": "CheckpointLoaderSimple",
     "_meta": {
