@@ -10,8 +10,8 @@
   },
   "74": {
     "inputs": {
-      "weight": 1,
-      "weight_type": "style transfer",
+      "weight": 2,
+      "weight_type": "strong style transfer",
       "combine_embeds": "concat",
       "start_at": 0,
       "end_at": 1,
@@ -60,9 +60,9 @@
   "79": {
     "inputs": {
       "seed": 2342342234,
-      "steps": 12,
+      "steps": 80,
       "cfg": 5,
-      "sampler_name": "dpmpp_2m_sde_gpu",
+      "sampler_name": "dpmpp_2m_sde",
       "scheduler": "karras",
       "denoise": 1,
       "model": [
@@ -89,7 +89,7 @@
   },
   "80": {
     "inputs": {
-      "text": "far shot view of an large ancient village, river passing through the middle, there are people around",
+      "text": "far shot view of an large ancient village, river passing through the middle, there are people in the river",
       "clip": [
         "56",
         1
@@ -102,7 +102,7 @@
   },
   "81": {
     "inputs": {
-      "text": "text, blurry, noisy, low resolution, jpeg, artifacts, malformed, ill, distorted",
+      "text": "text, blurry, noisy, low resolution, artifacts, malformed, ill, distorted",
       "clip": [
         "56",
         1
