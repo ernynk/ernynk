@@ -10,7 +10,7 @@
   },
   "74": {
     "inputs": {
-      "weight": 0.3,
+      "weight": 0.2,
       "weight_type": "style transfer",
       "combine_embeds": "concat",
       "start_at": 0,
@@ -61,7 +61,7 @@
     "inputs": {
       "seed": 2342342234,
       "steps": 10,
-      "cfg": 5,
+      "cfg": 0.44,
       "sampler_name": "dpmpp_2m_sde_gpu",
       "scheduler": "karras",
       "denoise": 1,
@@ -120,8 +120,8 @@
         0
       ],
       "vae": [
-        "92",
-        0
+        "56",
+        2
       ]
     },
     "class_type": "VAEDecode",
@@ -151,15 +151,6 @@
     "class_type": "SaveImage",
     "_meta": {
       "title": "Save Image"
-    }
-  },
-  "92": {
-    "inputs": {
-      "vae_name": "sdxl_vae.safetensors"
-    },
-    "class_type": "VAELoader",
-    "_meta": {
-      "title": "Load VAE"
     }
   }
 }
