@@ -89,7 +89,7 @@
   },
   "80": {
     "inputs": {
-      "text": "far shot view of an large ancient village, river passing through the middle, there are people in the river",
+      "text": "Masterpiece, best quality, good quality, scenic shot, far shot, ancient village, river, ancient people, ancient, utopia, civilization, blue sky, forest",
       "clip": [
         "56",
         1
@@ -102,7 +102,7 @@
   },
   "81": {
     "inputs": {
-      "text": "text, blurry, noisy, low resolution, artifacts, malformed, ill, distorted",
+      "text": "bad quality, worst quality, text, blurry, noisy, distorted, nsfw, nudity",
       "clip": [
         "56",
         1
