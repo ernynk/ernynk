@@ -49,7 +49,7 @@
   },
   "78": {
     "inputs": {
-      "image": "images.jpg",
+      "image": "image.png",
       "upload": "image"
     },
     "class_type": "LoadImage",
