@@ -10,12 +10,12 @@
   },
   "74": {
     "inputs": {
-      "weight": 1.5,
+      "weight": 1,
       "weight_type": "style transfer",
       "combine_embeds": "concat",
       "start_at": 0,
       "end_at": 1,
-      "embeds_scaling": "K+V",
+      "embeds_scaling": "V only",
       "model": [
         "76",
         0
@@ -61,7 +61,7 @@
     "inputs": {
       "seed": 2342342234,
       "steps": 60,
-      "cfg": 7,
+      "cfg": 6,
       "sampler_name": "dpmpp_2m_sde",
       "scheduler": "karras",
       "denoise": 1,
@@ -89,7 +89,7 @@
   },
   "80": {
     "inputs": {
-      "text": "Masterpiece, best quality, good quality, scenic shot, far shot, ancient village, river, ancient people, ancient, utopia, civilization, blue sky, forest",
+      "text": "Masterpiece, best quality, good quality, far shot of a village, river passing through the middle of village, people standing around, blue sky, forest around the village",
       "clip": [
         "56",
         1
