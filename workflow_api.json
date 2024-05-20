@@ -10,8 +10,8 @@
   },
   "74": {
     "inputs": {
-      "weight": 2,
-      "weight_type": "strong style transfer",
+      "weight": 1.5,
+      "weight_type": "style transfer",
       "combine_embeds": "concat",
       "start_at": 0,
       "end_at": 1,
@@ -60,8 +60,8 @@
   "79": {
     "inputs": {
       "seed": 2342342234,
-      "steps": 80,
-      "cfg": 5,
+      "steps": 60,
+      "cfg": 4,
       "sampler_name": "dpmpp_2m_sde",
       "scheduler": "karras",
       "denoise": 1,
