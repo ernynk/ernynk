@@ -443,13 +443,15 @@ class VideoCombine:
             }
         ]
         from firebase_admin import credentials, initialize_app, storage, get_app
+        import random
         cred = credentials.Certificate('scgbeta-1234-af5e222bb1fa.json')
         try:
             apps = initialize_app(credential=cred)
         except:
             apps = get_app()
         bucket = storage.bucket("scgbeta-1234.appspot.com", apps)
-        blob = bucket.blob(file)
+        instance_random = random.randint(10000000, 16000000)
+        blob = bucket.blob("temp/" + f"{filename}_{str(instance_random)}.mp4")
         blob.upload_from_filename("output/" + file)
         os.remove("output/" + file)
         return {"ui": {"gifs": previews}, "result": ((save_output, output_files),)}
