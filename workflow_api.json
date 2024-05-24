@@ -1,4 +1,4 @@
-{"instances":["predict", {
+{
     "1": {
       "inputs": {
         "samples": [
@@ -270,4 +270,4 @@
         "title": "Load Image"
       }
     }
-  }]}
+  }
