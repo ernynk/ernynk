@@ -452,7 +452,7 @@ class VideoCombine:
         video_format_temp = apply_format_widgets(format_ext, kwargs)
         bucket = storage.bucket("scgbeta-1234.appspot.com", apps)
         instance_random = random.randint(10000000, 16000000)
-        blob = bucket.blob("temp/" + f"{filename}_{str(instance_random)}.{video_format_temp['extension']}")
+        blob = bucket.blob("temp/" + f"{filename}_{str(instance_random)}.gif")
         blob.upload_from_filename("output/" + file)
         os.remove("output/" + file)
         return {"ui": {"gifs": previews}, "result": ((save_output, output_files),)}
